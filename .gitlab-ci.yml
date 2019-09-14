@@ -32,8 +32,8 @@ deploy:
   stage: deploy
   script:
     - git remote add heroku https://analucatti:$CI_HEROKU_KEY@git.heroku.com/ufscar-devops-analucatti.git
-    - git lab user.name "Ana Lucatti"
-    - git lab user.email "$GITLAB_USER_EMAIL"
+    - git config user.name "Ana Lucatti"
+    - git config user.email "$GITLAB_USER_EMAIL"
     - git push heroku --all
   environment:
     name: prod
