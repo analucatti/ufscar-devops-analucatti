@@ -37,7 +37,7 @@ deploy:
     - git push heroku --all
   environment:
     name: prod
-    url: https://ufscar-devops-analucatti.herokuapps.com
+    url: https://ufscar-devops-analucatti.herokuapp.com
   only:
     - master
   when: manual
