@@ -23,7 +23,7 @@ unit-test:
   stage: test
   script:
     - mvn $MAVEN_OPTS clean test
-    - "cat target/site/jacoco/index.html"
+    - cat target/site/jacoco/index.html | grep -o 'Total[^%]*%' | sed -e 's/Total/Jacoco-Test-Coverage:/g'
 
 build:
   stage: build
