@@ -23,6 +23,7 @@ unit-test:
   stage: test
   script:
     - mvn $MAVEN_OPTS clean test
+    - echo "target/site/jacoco/index.html"
 
 build:
   stage: build

@@ -33,8 +33,14 @@ public class DockerApplicationTests {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldReturnDefaultMessage() throws Exception {
+    public void shouldReturnWelcomeMessage() throws Exception {
         this.mockMvc.perform(get(Constants.URI.getType())).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString(Constants.WELCOME.getType())));
+    }
+
+    @Test
+    public void shouldReturnDefaultMessage() throws Exception {
+        this.mockMvc.perform(get(Constants.HOME.getType())).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString(Constants.APP.getType())));
     }
 }
