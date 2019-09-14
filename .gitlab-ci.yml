@@ -40,5 +40,4 @@ deploy:
     url: https://ufscar-devops-analucatti.herokuapp.com
   only:
     - master
-  when: manual
 
