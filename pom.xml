@@ -54,12 +54,13 @@
                 <version>0.8.4</version>
                 <executions>
                     <execution>
+                        <id>pre-unit-test</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>report</id>
+                        <id>post-unit-test</id>
                         <phase>test</phase>
                         <goals>
                             <goal>report</goal>

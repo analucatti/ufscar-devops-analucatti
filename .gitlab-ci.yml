@@ -23,7 +23,7 @@ unit-test:
   stage: test
   script:
     - mvn $MAVEN_OPTS clean test
-    - echo "target/site/jacoco/index.html"
+    - "cat target/site/jacoco/index.html"
 
 build:
   stage: build
@@ -41,5 +41,4 @@ deploy:
     url: https://ufscar-devops-analucatti.herokuapp.com
   only:
     - master
-  when: manual
 
