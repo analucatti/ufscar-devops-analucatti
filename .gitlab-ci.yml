@@ -1,5 +1,12 @@
 image: maven:3.3.9-jdk-8
 
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository
+
 stages:
   - validate
   - test
@@ -10,22 +17,24 @@ stages:
 validate:
   stage: validate
   script:
-    - mvn validate
+    - mvn $MAVEN_OPTS validate
 
 unit-test:
   stage: test
   script:
-    - mvn clean test
+    - mvn $MAVEN_OPTS clean test
 
 build:
   stage: build
-  script: mvn clean package
+  script: mvn $MAVEN_OPTS clean package
 
 deploy:
   stage: deploy
   script:
     - git remote add heroku https://analucatti:$CI_HEROKU_KEY@git.heroku.com/ufscar-devops-analucatti.git
-    - git push heroku master
+    - git lab user.name "Ana Lucatti"
+    - git lab user.email "$GITLAB_USER_EMAIL"
+    - git push heroku --all
   environment:
     name: prod
     url: https://ufscar-devops-analucatti.herokuapps.com
