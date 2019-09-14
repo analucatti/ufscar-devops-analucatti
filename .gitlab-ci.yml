@@ -21,3 +21,15 @@ build:
   stage: build
   script: mvn clean package
 
+deploy:
+  stage: deploy
+  script:
+    - git remote add heroku https://analucatti:$CI_HEROKU_KEY@git.heroku.com/ufscar-devops-analucatti.git
+    - git push heroku master
+  environment:
+    name: prod
+    url: https://ufscar-devops-analucatti.herokuapps.com
+  only:
+    - master
+  when: manual
+
